@@ -1,8 +1,6 @@
 package iterable_interface.collection_interfaces.a_list_interface.array_list_class_realization;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class ArrayListWithStreamAPI {
@@ -20,6 +18,12 @@ public class ArrayListWithStreamAPI {
         mappingToUpperCaseInOneLine(fruits); // BANANA, ORANGE, APPLE, MELON
         mappingNumberToWords(numbers); // One Two Five Three Eight One Seven Two Four
         mappingNumberToBinary(numbers); // 1 10 101 11 1000 1 111 10 100 (each in new row)
+
+                    // sorting
+        sortByAlphabet(fruits); // Apple Banana Melon Orange (each in new row)
+        sortByLength(fruits); // Apple Melon Banana Orange (each in new row)
+        sortByValue(numbers); // 1 1 2 2 3 4 5 7 8 (each in new row)
+        System.out.println(sortByEvenNumber(numbers)); // [2, 2, 4, 8]
     }
 
                                 // FILTERS
@@ -81,6 +85,38 @@ public class ArrayListWithStreamAPI {
                 .map(Integer::toBinaryString)
                 .forEach(System.out::println);
     }
+
+                                // SORT
+
+    private static void sortByAlphabet(ArrayList<String> list) {
+        list.stream()
+                .sorted()
+                .forEach(System.out::println)
+        ;
+    }
+
+    private static void sortByLength(ArrayList<String> list) {
+        list.stream()
+                .sorted(Comparator.comparingInt(String::length))
+                .forEach(System.out::println)
+        ;
+    }
+
+    private static void sortByValue(ArrayList<Integer> list) {
+        list.stream()
+                .sorted()
+                .forEach(System.out::println)
+        ;
+    }
+
+    private static List<Integer> sortByEvenNumber(ArrayList<Integer> list) {
+        return list.stream()
+                .filter(number -> number % 2 == 0)
+                .sorted()
+                .collect(Collectors.toList())
+        ;
+    }
+
 
 
 }

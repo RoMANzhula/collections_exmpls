@@ -37,6 +37,9 @@ public class ArrayListExample {
             System.out.println(elementOFList);
         }
 
+        // checking is empty our list
+        System.out.println("Our list is empty? - " + list.isEmpty() + ". Because his size is: " + list.size());
+
         // method removeAll() - remove all elements from general list via a secondary list
         ArrayList<String> listForRemoveFromGeneralList = new ArrayList<>(Arrays.asList("Java", "JavaScript"));
         list.removeAll(listForRemoveFromGeneralList);

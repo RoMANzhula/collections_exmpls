@@ -29,6 +29,9 @@ public class ArrayListWithStreamAPI {
         checkListElementBeginChar(fruits, "A"); // Contains element(s) starting with A: true
         checkListHasNumber(numbers, 2); // The list includes number: 2
 
+                    // counting elements
+        countElementsStringByCondition(fruits, "B"); // Elements starting with _B_: 1
+        countElementNumberByCondition(numbers, 1); // Count of element _1_ = 2
 
     }
 
@@ -145,5 +148,24 @@ public class ArrayListWithStreamAPI {
         }
     }
 
+                            // COUNTING ELEMENTS
+
+    private static void countElementsStringByCondition(ArrayList<String> list, String str) {
+        long countElement = list.stream()
+                .filter(element -> element.startsWith(str))
+                .count()
+        ;
+
+        System.out.println("Elements starting with _" + str + "_: " + countElement);
+    }
+
+    private static void countElementNumberByCondition(ArrayList<Integer> list, int num) {
+        long countElement = list.stream()
+                .filter(element -> element == num)
+                .count()
+        ;
+
+        System.out.println("Count of element _" + num + "_ = " + countElement);
+    }
 
 }

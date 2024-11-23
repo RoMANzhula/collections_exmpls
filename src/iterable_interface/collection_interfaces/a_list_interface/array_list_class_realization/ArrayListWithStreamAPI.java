@@ -24,6 +24,12 @@ public class ArrayListWithStreamAPI {
         sortByLength(fruits); // Apple Melon Banana Orange (each in new row)
         sortByValue(numbers); // 1 1 2 2 3 4 5 7 8 (each in new row)
         System.out.println(sortByEvenNumber(numbers)); // [2, 2, 4, 8]
+
+                    // checking conditions
+        checkListElementBeginChar(fruits, "A"); // Contains element(s) starting with A: true
+        checkListHasNumber(numbers, 2); // The list includes number: 2
+
+
     }
 
                                 // FILTERS
@@ -117,6 +123,27 @@ public class ArrayListWithStreamAPI {
         ;
     }
 
+                            // CHECK CONDITIONS
+
+    private static void checkListElementBeginChar(ArrayList<String> list, String str) {
+        boolean hasElement = list.stream()
+                .anyMatch(element -> element.startsWith(str))
+        ;
+
+        System.out.println("Contains element(s) starting with " + str + ": " + hasElement);
+    }
+
+    private static void checkListHasNumber(ArrayList<Integer> list, int num) {
+        boolean hasNumber = list.stream()
+                .anyMatch(element -> element == num)
+        ;
+
+        if (hasNumber) {
+            System.out.println("The list includes number: " + num);
+        } else {
+            System.out.println("The list not includes number: " + num);
+        }
+    }
 
 
 }

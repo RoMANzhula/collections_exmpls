@@ -37,6 +37,10 @@ public class ArrayListWithStreamAPI {
         findFirstElementStringByCondition(fruits, "M"); // Melon
         findAnyElementNumbersByCondition(numbers, 1); // 1
 
+                    // grouping elements
+        groupedByNumberOfLetterInWord(fruits, 0); // A : [Apple, Avocado] B : [Banana] M : [Melon, Mango] O : [Orange]
+        groupedByNumber(numbers); // 1 : [1, 1] 2 : [2, 2] 3 : [3] 4 : [4] 5 : [5] 7 : [7] 8 : [8]
+
     }
 
                                 // FILTERS
@@ -188,6 +192,30 @@ public class ArrayListWithStreamAPI {
                 .findAny()
                 .ifPresent(System.out::println)
         ;
+    }
+
+                            // GROUPING ELEMENTS
+    private static void groupedByNumberOfLetterInWord(ArrayList<String> list, int numOfElementInWord) {
+        list.add("Avocado");
+        list.add("Mango");
+
+        Map<Character, List<String>> groupedByNumLetter = list.stream()
+                .collect(Collectors.groupingBy(element -> element.charAt(numOfElementInWord)))
+        ;
+
+        groupedByNumLetter.forEach((key, value) -> {
+            System.out.println(key + " : " + value);
+        });
+    }
+
+    private static void groupedByNumber(ArrayList<Integer> list) {
+        Map<Integer, List<Integer>> grouped = list.stream()
+                .collect(Collectors.groupingBy(element -> element))
+        ;
+
+        grouped.forEach((key, value) -> {
+            System.out.println(key + " : " + value);
+        });
     }
 
 }

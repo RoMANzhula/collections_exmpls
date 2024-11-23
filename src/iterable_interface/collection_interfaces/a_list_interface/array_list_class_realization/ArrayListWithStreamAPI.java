@@ -33,6 +33,10 @@ public class ArrayListWithStreamAPI {
         countElementsStringByCondition(fruits, "B"); // Elements starting with _B_: 1
         countElementNumberByCondition(numbers, 1); // Count of element _1_ = 2
 
+                    // searching elements
+        findFirstElementStringByCondition(fruits, "M"); // Melon
+        findAnyElementNumbersByCondition(numbers, 1); // 1
+
     }
 
                                 // FILTERS
@@ -166,6 +170,24 @@ public class ArrayListWithStreamAPI {
         ;
 
         System.out.println("Count of element _" + num + "_ = " + countElement);
+    }
+
+                            // SEARCHING ELEMENTS
+
+    private static void findFirstElementStringByCondition(ArrayList<String> list, String str) {
+        list.stream()
+                .filter(element -> element.startsWith(str))
+                .findFirst()
+                .ifPresent(System.out::println)
+        ;
+    }
+
+    private static void findAnyElementNumbersByCondition(ArrayList<Integer> list, int num) {
+        list.stream()
+                .filter(element -> element == num)
+                .findAny()
+                .ifPresent(System.out::println)
+        ;
     }
 
 }

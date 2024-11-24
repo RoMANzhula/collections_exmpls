@@ -41,6 +41,11 @@ public class ArrayListWithStreamAPI {
         groupedByNumberOfLetterInWord(fruits, 0); // A : [Apple, Avocado] B : [Banana] M : [Melon, Mango] O : [Orange]
         groupedByNumber(numbers); // 1 : [1, 1] 2 : [2, 2] 3 : [3] 4 : [4] 5 : [5] 7 : [7] 8 : [8]
 
+                    // collecting
+        collectStringToRowWithComa(fruits, ", "); // Banana, Orange, Apple, Melon, Avocado, Mango
+        collectNumberToRowWithComa(numbers, "| "); // 1| 2| 5| 3| 8| 1| 7| 2| 4
+
+
     }
 
                                 // FILTERS
@@ -217,5 +222,23 @@ public class ArrayListWithStreamAPI {
             System.out.println(key + " : " + value);
         });
     }
+
+                                // COLLECTING ELEMENTS
+
+    private static void collectStringToRowWithComa(ArrayList<String> list, String separator) {
+        String result = list.stream()
+                .collect(Collectors.joining(separator));
+
+        System.out.println(result);
+    }
+
+    private static void collectNumberToRowWithComa(ArrayList<Integer> list, String separator) {
+        String result = list.stream()
+                .map(Object::toString)
+                .collect(Collectors.joining(separator));
+
+        System.out.println(result);
+    }
+
 
 }

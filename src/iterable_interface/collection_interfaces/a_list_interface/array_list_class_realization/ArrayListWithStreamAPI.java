@@ -50,6 +50,10 @@ public class ArrayListWithStreamAPI {
         getTotalSumAllNums(numbers); // Total sum of all numbers: 33
         getAverageAllNums(numbers); // Average of all numbers: OptionalDouble[3.67]
 
+                    // batching (division of elements into groups)
+        batchedStringListIntoGroupsOfN(fruits, 3); // [Banana, Orange, Apple] [Melon, Avocado, Mango]
+        batchedIntegerListIntoGroupsOfN(numbers, 4); // [1, 2, 5, 3] [8, 1, 7, 2] [4]
+
     }
 
                                 // FILTERS
@@ -278,7 +282,44 @@ public class ArrayListWithStreamAPI {
         } else {
             System.out.println("The list is empty. No average calculated.");
         }
+    }
 
+                                // BATCHING (dividing elements into groups)
+
+    private static void batchedStringListIntoGroupsOfN(ArrayList<String> list, int nElementsInGroup) {
+        List<List<String>> batchedList = list.stream()
+                .collect(Collectors.collectingAndThen(
+                        Collectors.toList(),
+                        listResult -> {
+                            List<List<String>> batches = new ArrayList<>();
+                            for (int i = 0; i < listResult.size(); i+= nElementsInGroup) {
+                                batches.add(listResult.subList(i, Math.min(i + nElementsInGroup, listResult.size())));
+                            }
+
+                            return batches;
+                        }
+                ))
+        ;
+
+        batchedList.forEach(System.out::println);
+    }
+
+    private static void batchedIntegerListIntoGroupsOfN(ArrayList<Integer> list, int nElementsInGroup) {
+        List<List<Integer>> bachedList = list.stream()
+                .collect(Collectors.collectingAndThen(
+                        Collectors.toList(),
+                        listResult -> {
+                            List<List<Integer>> batches = new ArrayList<>();
+                            for (int i = 0; i < listResult.size(); i += nElementsInGroup) {
+                                batches.add(listResult.subList(i, Math.min(i + nElementsInGroup, listResult.size())));
+                            }
+
+                            return batches;
+                        }
+                ))
+        ;
+
+        bachedList.forEach(System.out::println);
     }
 
 }

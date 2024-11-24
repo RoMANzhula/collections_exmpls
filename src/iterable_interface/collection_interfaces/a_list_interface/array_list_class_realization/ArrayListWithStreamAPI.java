@@ -45,6 +45,10 @@ public class ArrayListWithStreamAPI {
         collectStringToRowWithComa(fruits, ", "); // Banana, Orange, Apple, Melon, Avocado, Mango
         collectNumberToRowWithComa(numbers, "| "); // 1| 2| 5| 3| 8| 1| 7| 2| 4
 
+                    // aggregation of data
+        getTotalCharsLength(fruits); // Total length of all strings: 34
+        getTotalSumAllNums(numbers); // Total sum of all numbers: 33
+        getAverageAllNums(numbers); // Average of all numbers: OptionalDouble[3.67]
 
     }
 
@@ -240,5 +244,41 @@ public class ArrayListWithStreamAPI {
         System.out.println(result);
     }
 
+                                // AGGREGATION OF DATA
+
+    private static void getTotalCharsLength(ArrayList<String> list) {
+        int totalLength = list.stream()
+                .mapToInt(String::length)
+                .sum()
+                ;
+
+        System.out.println("Total length of all strings: " + totalLength);
+    }
+
+    private static void getTotalSumAllNums(ArrayList<Integer> list) {
+        long totalSum = list.stream()
+                .mapToInt(Integer::intValue)
+                .sum()
+                ;
+
+        System.out.println("Total sum of all numbers: " + totalSum);
+
+    }
+
+    private static void getAverageAllNums(ArrayList<Integer> list) {
+        OptionalDouble average = list.stream()
+                .mapToInt(Integer::intValue)
+                .average()
+                ;
+
+        if (average.isPresent()) {
+//            System.out.println("Average of all numbers: " + String.format("%.2f", average)); // if we use primitive double
+            double roundedAverage = Math.round(average.getAsDouble() * 100.0) / 100.0; // for 3 elements after dot *1000.0 /1000.00
+            System.out.println("Average of all numbers (rounded): " + roundedAverage);
+        } else {
+            System.out.println("The list is empty. No average calculated.");
+        }
+
+    }
 
 }

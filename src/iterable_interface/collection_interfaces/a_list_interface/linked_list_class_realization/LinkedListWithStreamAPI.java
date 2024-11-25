@@ -49,6 +49,10 @@ public class LinkedListWithStreamAPI {
         returnSkipListString(fruit, 2); // Skipped list strs: [Orange, Apricot, Apple]
         returnSkipListInteger(numbers, 3); // Skipped list nums: [10, 10]
 
+                    // match
+        returnIfMatchString(fruit); // Any match with _Apple_: true, all match length == 5: false, none match start _1_: true
+        returnIfMatchInteger(numbers); // Any match > 25: true, all match == 7: false, none match < 0: true
+
     }
 
                                         // FILTERING
@@ -214,6 +218,47 @@ public class LinkedListWithStreamAPI {
                 ;
 
         System.out.println("Skipped list nums: " + skippedList);
+    }
+
+                                    // MATCHING
+
+    private static void returnIfMatchString(LinkedList<String> list) {
+        boolean anyMatch = list.stream()
+                .anyMatch(element -> element.equals("Apple"))
+        ;
+
+        boolean allMatch = list.stream()
+                .allMatch(element -> element.length() == 5)
+        ;
+
+        boolean noneMatch = list.stream()
+                .noneMatch(element -> element.startsWith("1"))
+        ;
+
+        System.out.println("Any match with _Apple_: " + anyMatch +
+                ", all match length == 5: " + allMatch +
+                ", none match start _1_: " + noneMatch
+        );
+
+    }
+
+    private static void returnIfMatchInteger(LinkedList<Integer> list) {
+        boolean anyMatch = list.stream()
+                .anyMatch(element -> element > 25)
+        ;
+
+        boolean allMatch = list.stream()
+                .allMatch(element -> element == 7)
+        ;
+
+        boolean noneMatch = list.stream()
+                .noneMatch(element -> element < 0)
+        ;
+
+        System.out.println("Any match > 25: " + anyMatch +
+                ", all match == 7: " + allMatch +
+                ", none match < 0: " + noneMatch
+        );
     }
 
 }

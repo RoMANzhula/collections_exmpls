@@ -45,6 +45,10 @@ public class LinkedListWithStreamAPI {
         returnLimitedListString(fruit, 2); // Limited list from linkedList: [Apple, Banana]
         returnLimitedListInteger(numbers, 1); // Limited list from linkedList: [10]
 
+                    // skip
+        returnSkipListString(fruit, 2); // Skipped list strs: [Orange, Apricot, Apple]
+        returnSkipListInteger(numbers, 3); // Skipped list nums: [10, 10]
+
     }
 
                                         // FILTERING
@@ -193,5 +197,23 @@ public class LinkedListWithStreamAPI {
         System.out.println("Limited list from linkedList: " + limitedList);
     }
 
+                                            // SKIP
+    private static void returnSkipListString(LinkedList<String> list, long skipNum) {
+        List<String> skippedList = list.stream()
+                .skip(skipNum)
+                .toList()
+        ;
+
+        System.out.println("Skipped list strs: " + skippedList);
+    }
+
+    private static void returnSkipListInteger(LinkedList<Integer> list, long skipNum) {
+        List<Integer> skippedList = list.stream()
+                .skip(skipNum)
+                .toList()
+                ;
+
+        System.out.println("Skipped list nums: " + skippedList);
+    }
 
 }

@@ -41,6 +41,10 @@ public class LinkedListWithStreamAPI {
         removeDuplicatesString(fruit); // Was LinkedList strs: [Apple, Banana, Orange, Apricot, Apple], nowdistinct list: [Apple, Banana, Orange, Apricot]
         removeDuplicatesNumber(numbers); // Was LinkedList nums: [10, 20, 30, 10, 10], nowdistinct list: [10, 20, 30]
 
+                    // limit
+        returnLimitedListString(fruit, 2); // Limited list from linkedList: [Apple, Banana]
+        returnLimitedListInteger(numbers, 1); // Limited list from linkedList: [10]
+
     }
 
                                         // FILTERING
@@ -167,6 +171,26 @@ public class LinkedListWithStreamAPI {
         ;
 
         System.out.println("Was LinkedList nums: " + list + ", nowdistinct list: " + distinctList);
+    }
+
+                                            // LIMIT
+
+    private static void returnLimitedListString(LinkedList<String> list, int limit) {
+        List<String> limitedList = list.stream()
+                .limit(limit)
+                .collect(Collectors.toList())
+        ;
+
+        System.out.println("Limited list from linkedList: " + limitedList);
+    }
+
+    private static void returnLimitedListInteger(LinkedList<Integer> list, int limit) {
+        List<Integer> limitedList = list.stream()
+                .limit(limit)
+                .toList()
+        ;
+
+        System.out.println("Limited list from linkedList: " + limitedList);
     }
 
 

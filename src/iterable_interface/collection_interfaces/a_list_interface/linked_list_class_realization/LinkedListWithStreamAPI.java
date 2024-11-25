@@ -1,8 +1,10 @@
 package iterable_interface.collection_interfaces.a_list_interface.linked_list_class_realization;
 
+import java.util.Comparator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 public class LinkedListWithStreamAPI {
@@ -26,6 +28,11 @@ public class LinkedListWithStreamAPI {
                     // mapping (transforming)
         mappingToShorterWord(fruit, 3); // List with shorted words:[App, Ban, Ora, Apr]
         mappingToIncreaseOnN(numbers, 2); // All elements after increment: [12, 22, 32]
+
+                    // sorting
+        sortedByAlphabet(fruit); // Sorted list: [Apple, Apricot, Banana, Orange]
+        sortedByDecreasingNumber(numbers); // Sorted numbers in descending order: [30, 20, 10]
+
 
 
     }
@@ -55,6 +62,7 @@ public class LinkedListWithStreamAPI {
     }
 
                                         // MAPPING
+
     private static void mappingToShorterWord(LinkedList<String> list, int wordLength) {
         List<String> result = list.stream()
                 .map(word -> word.length() > wordLength ? word.substring(0, wordLength) : word)
@@ -71,6 +79,26 @@ public class LinkedListWithStreamAPI {
         ;
 
         System.out.println("All elements after increment: " + result);
+    }
+
+                                        // SORTING
+
+    private static void sortedByAlphabet(LinkedList<String> list) {
+        List<String> sortedList = list.stream()
+                .sorted()
+                .collect(Collectors.toList())
+        ;
+
+        System.out.println("Sorted list: " + sortedList);
+    }
+
+    private static void sortedByDecreasingNumber(LinkedList<Integer> list) {
+        List<Integer> sortedList = list.stream()
+                .sorted(Comparator.reverseOrder())
+                .collect(Collectors.toList())
+        ;
+
+        System.out.println("Sorted numbers in descending order: " + sortedList);
     }
 
 }

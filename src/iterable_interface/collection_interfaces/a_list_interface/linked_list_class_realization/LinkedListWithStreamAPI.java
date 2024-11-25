@@ -33,6 +33,11 @@ public class LinkedListWithStreamAPI {
         collectedToSet(fruit); // Unique set from LinkedList: [Apple, Apricot, Orange, Banana]
         collectedToQueue(numbers); // Queue from LinkedList: [10, 20, 30, 10, 10]
 
+                    // reducing
+        reducedNumberElementsTo(numbers, 4); // Sum of elements: 84 (all sum + 4) - 80 because we added two new elements 10 and 10
+        reducedAllStringLengthElements(fruit, 0); // Total sum of string lengths: 29 (Apple, Banana, Orange, Apricot, Apple) 29 + 0
+
+
     }
 
                                         // FILTERING
@@ -121,5 +126,25 @@ public class LinkedListWithStreamAPI {
 
         System.out.println("Queue from LinkedList: " + queueFromLinkedList);
     }
+
+                                            // REDUCING
+
+    private static void reducedNumberElementsTo(LinkedList<Integer> list, int addToSum) {
+        int sum = list.stream()
+                .reduce(addToSum, Integer::sum)
+        ;
+
+        System.out.println("Sum of elements: " + sum);
+    }
+
+    private static void reducedAllStringLengthElements(LinkedList<String> list, int addToSum) {
+        int sum = list.stream()
+                .mapToInt(String::length)
+                .reduce(addToSum, Integer::sum)
+        ;
+
+        System.out.println("Total sum of string lengths: " + sum);
+    }
+
 
 }

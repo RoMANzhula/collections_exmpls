@@ -1,10 +1,6 @@
 package iterable_interface.collection_interfaces.a_list_interface.linked_list_class_realization;
 
-import java.util.Comparator;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Optional;
-import java.util.stream.Collector;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class LinkedListWithStreamAPI {
@@ -33,7 +29,9 @@ public class LinkedListWithStreamAPI {
         sortedByAlphabet(fruit); // Sorted list: [Apple, Apricot, Banana, Orange]
         sortedByDecreasingNumber(numbers); // Sorted numbers in descending order: [30, 20, 10]
 
-
+                    // collecting
+        collectedToSet(fruit); // Unique set from LinkedList: [Apple, Apricot, Orange, Banana]
+        collectedToQueue(numbers); // Queue from LinkedList: [10, 20, 30, 10, 10]
 
     }
 
@@ -99,6 +97,29 @@ public class LinkedListWithStreamAPI {
         ;
 
         System.out.println("Sorted numbers in descending order: " + sortedList);
+    }
+
+                                        // COLLECTING
+
+    private static void collectedToSet(LinkedList<String> list) {
+        list.add("Apple"); // add a duplicate to the general list
+
+        Set<String> uniqueSet = list.stream()
+                .collect(Collectors.toSet())
+        ;
+
+        System.out.println("Unique set from LinkedList: " + uniqueSet);
+    }
+
+    private static void collectedToQueue(LinkedList<Integer> list) {
+        list.add(10);
+        list.add(10);
+
+        Queue<Integer> queueFromLinkedList = list.stream()
+                .collect(Collectors.toCollection(LinkedList::new))
+        ;
+
+        System.out.println("Queue from LinkedList: " + queueFromLinkedList);
     }
 
 }

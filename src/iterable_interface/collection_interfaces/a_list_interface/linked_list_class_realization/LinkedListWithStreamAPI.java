@@ -37,6 +37,9 @@ public class LinkedListWithStreamAPI {
         reducedNumberElementsTo(numbers, 4); // Sum of elements: 84 (all sum + 4) - 80 because we added two new elements 10 and 10
         reducedAllStringLengthElements(fruit, 0); // Total sum of string lengths: 29 (Apple, Banana, Orange, Apricot, Apple) 29 + 0
 
+                    // distinct
+        removeDuplicatesString(fruit); // Was LinkedList strs: [Apple, Banana, Orange, Apricot, Apple], nowdistinct list: [Apple, Banana, Orange, Apricot]
+        removeDuplicatesNumber(numbers); // Was LinkedList nums: [10, 20, 30, 10, 10], nowdistinct list: [10, 20, 30]
 
     }
 
@@ -144,6 +147,26 @@ public class LinkedListWithStreamAPI {
         ;
 
         System.out.println("Total sum of string lengths: " + sum);
+    }
+
+                                    // DISTINCT
+
+    private static void removeDuplicatesString(LinkedList<String> list) {
+        List<String> distinctList = list.stream()
+                .distinct()
+                .collect(Collectors.toList())
+        ;
+
+        System.out.println("Was LinkedList strs: " + list + ", nowdistinct list: " + distinctList);
+    }
+
+    private static void removeDuplicatesNumber(LinkedList<Integer> list) {
+        List<Integer> distinctList = list.stream()
+                .distinct()
+                .collect(Collectors.toList())
+        ;
+
+        System.out.println("Was LinkedList nums: " + list + ", nowdistinct list: " + distinctList);
     }
 
 

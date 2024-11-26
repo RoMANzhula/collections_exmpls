@@ -18,7 +18,10 @@ public class VectorWithStreamAPI {
         filteredVector(vector, 1); // Filtered vector: [2, 3, 4]
 
             // mapping
-        mappedVectorDoubling(vector);
+        mappedVectorDoubling(vector); // Mapped vector: [2, 4, 6, 8]
+
+            // sorting
+        sortedVector(vector); // Sorted vector: [1, 2, 3, 4]
 
     }
 
@@ -56,6 +59,17 @@ public class VectorWithStreamAPI {
         ;
 
         System.out.println("Mapped vector: " + mappedVector);
+    }
+
+                                // SORT
+
+    private static void sortedVector(Vector<Integer> vector) {
+        Vector<Integer> sortedVector = vector.stream()
+                .sorted()
+                .collect(Collectors.toCollection(Vector::new))
+        ;
+
+        System.out.println("Sorted vector: " + sortedVector);
     }
 
 }

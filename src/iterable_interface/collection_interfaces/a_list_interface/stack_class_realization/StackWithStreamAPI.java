@@ -1,5 +1,6 @@
 package iterable_interface.collection_interfaces.a_list_interface.stack_class_realization;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.Stack;
@@ -37,6 +38,9 @@ public class StackWithStreamAPI {
 
                     // iterate
         iteratedStack(stack); // 10 20 30 40
+
+                    // to array
+        convertToArray(stack); // Array: [10, 20, 30, 40]
 
     }
 
@@ -122,6 +126,15 @@ public class StackWithStreamAPI {
         stack.stream()
                 .forEach(System.out::println)
         ;
+    }
+
+                            // TO ARRAY
+    private static void convertToArray(Stack<Integer> stack) {
+        Integer[] array = stack.stream()
+                .toArray(Integer[]::new)
+        ;
+
+        System.out.println("Array: " + Arrays.toString(array));
     }
 
 }

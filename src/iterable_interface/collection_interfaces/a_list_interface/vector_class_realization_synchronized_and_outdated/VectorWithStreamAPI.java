@@ -41,6 +41,9 @@ public class VectorWithStreamAPI {
         collectedToArray(vector); // Array from Vector: [1, 2, 3, 4]
         collectedToList(vector); // List from Vector: [1, 2, 3, 4]
 
+            // count
+        countElementsMoreThan(vector, 2); // Count of elements > conditions: 2
+
 
     }
 
@@ -162,6 +165,16 @@ public class VectorWithStreamAPI {
         ;
 
         System.out.println("List from Vector: " + list);
+    }
+
+                            // COUNT
+    private static void countElementsMoreThan(Vector<Integer> vector, int condition) {
+        long counter = vector.stream()
+                .filter(element -> element > condition)
+                .count()
+        ;
+
+        System.out.println("Count of elements > conditions: " + counter);
     }
 
 }

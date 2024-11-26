@@ -16,6 +16,9 @@ public class StackWithStreamAPI {
                     // filter
         filteredStack(stack); // Filtered stack > 20: [30, 40]
 
+                    // mapping
+        mappedToString(stack); // An Integer stack is mapped to a String: [Ten, Twenty, Thirty, Forty]
+
     }
 
 
@@ -29,5 +32,22 @@ public class StackWithStreamAPI {
         System.out.println("Filtered stack > 20: " + filteredStack);
     }
 
+                            // MAPPING
+    private static void mappedToString(Stack<Integer> stack) {
+        Map<Integer, String> numberToWordMap = Map.of(
+                10, "Ten",
+                20, "Twenty",
+                30, "Thirty",
+                40, "Forty"
+        );
+
+        Stack<String> mappedStack = stack.stream()
+                .map(number -> numberToWordMap.getOrDefault(number, "Unknown"))
+//                .forEach(System.out::println)
+                .collect(Collectors.toCollection(Stack::new))
+        ;
+
+        System.out.println("An Integer stack is mapped to a String: " + mappedStack);
+    }
 
 }

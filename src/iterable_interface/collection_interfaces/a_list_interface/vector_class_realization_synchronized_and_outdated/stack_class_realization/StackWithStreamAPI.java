@@ -1,4 +1,4 @@
-package iterable_interface.collection_interfaces.a_list_interface.stack_class_realization;
+package iterable_interface.collection_interfaces.a_list_interface.vector_class_realization_synchronized_and_outdated.stack_class_realization;
 
 import java.util.Arrays;
 import java.util.List;

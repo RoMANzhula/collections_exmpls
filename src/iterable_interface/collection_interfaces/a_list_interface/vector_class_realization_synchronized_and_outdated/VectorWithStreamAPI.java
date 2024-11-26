@@ -33,6 +33,9 @@ public class VectorWithStreamAPI {
         matchAnyVector(vector); // Any match > 2: false
         matchNoneVector(vector); // None match == 100: false
 
+            // reduce
+        reducedSumAndTarget(vector, 7); // Reduced sum: 17 (because 10 + 7)
+
     }
 
                                 // CREATE STREAM
@@ -124,6 +127,17 @@ public class VectorWithStreamAPI {
         ;
 
         System.out.println("None match == 100: " + noneMatch);
+    }
+
+                            // REDUCE
+
+    private static void reducedSumAndTarget(Vector<Integer> vector, int target) {
+        int sum = vector.stream()
+            .reduce(target, Integer::sum)
+        ;
+
+        System.out.println("Reduced sum: " + sum);
+
     }
 
 

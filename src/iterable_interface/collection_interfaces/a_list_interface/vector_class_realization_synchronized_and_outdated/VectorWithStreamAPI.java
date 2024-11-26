@@ -17,6 +17,9 @@ public class VectorWithStreamAPI {
             // filter
         filteredVector(vector, 1); // Filtered vector: [2, 3, 4]
 
+            // mapping
+        mappedVectorDoubling(vector);
+
     }
 
                                 // CREATE STREAM
@@ -34,6 +37,7 @@ public class VectorWithStreamAPI {
     }
 
                                 // FILTER
+
     private static void filteredVector(Vector<Integer> vector, int condition) {
         Vector<Integer> filteredVector = vector.stream()
                 .filter(number -> number > condition)
@@ -41,6 +45,17 @@ public class VectorWithStreamAPI {
         ;
 
         System.out.println("Filtered vector: " + filteredVector);
+    }
+
+                                // MAP
+
+    private static void mappedVectorDoubling(Vector<Integer> vector) {
+        Vector<Integer> mappedVector = vector.stream()
+                .map(element -> element * 2)
+                .collect(Collectors.toCollection(Vector::new))
+        ;
+
+        System.out.println("Mapped vector: " + mappedVector);
     }
 
 }

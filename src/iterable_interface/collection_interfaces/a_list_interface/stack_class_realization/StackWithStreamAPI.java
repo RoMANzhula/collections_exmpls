@@ -29,6 +29,11 @@ public class StackWithStreamAPI {
                     // match (all, any, none)
         matchedStack(stack); // All elements are positive: true  Any element greater than 10: true  No negative elements: true
 
+                    // sorting
+        sortedStack(stack); // Sorted stack: [10, 20, 30, 40]
+
+
+
     }
 
 
@@ -90,5 +95,17 @@ public class StackWithStreamAPI {
         boolean noneNegative = stack.stream().noneMatch(x -> x < 0);
         System.out.println("No negative elements: " + noneNegative);
     }
+
+                            // SORT
+    private static void sortedStack(Stack<Integer> stack) {
+        Stack<Integer> sortedStack = stack.stream()
+                .sorted()
+                .collect(Collectors.toCollection(Stack::new))
+        ;
+
+        System.out.println("Sorted stack: " + sortedStack);
+    }
+
+
 
 }

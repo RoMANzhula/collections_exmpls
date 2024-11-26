@@ -2,6 +2,7 @@ package iterable_interface.collection_interfaces.a_list_interface.vector_class_r
 
 import java.util.Arrays;
 import java.util.Vector;
+import java.util.stream.Collectors;
 
 public class VectorWithStreamAPI {
 
@@ -10,10 +11,11 @@ public class VectorWithStreamAPI {
         vector.add(4);
 
             // create stream
-        createStream(vector);
-        createParallelStream(vector);
+        createStream(vector); // 1 2 3 4
+        createParallelStream(vector); // 3 4 2 1
 
-
+            // filter
+        filteredVector(vector, 1); // Filtered vector: [2, 3, 4]
 
     }
 
@@ -29,6 +31,16 @@ public class VectorWithStreamAPI {
         vector.parallelStream()
                 .forEach(System.out::println)
         ;
+    }
+
+                                // FILTER
+    private static void filteredVector(Vector<Integer> vector, int condition) {
+        Vector<Integer> filteredVector = vector.stream()
+                .filter(number -> number > condition)
+                .collect(Collectors.toCollection(Vector::new))
+        ;
+
+        System.out.println("Filtered vector: " + filteredVector);
     }
 
 }

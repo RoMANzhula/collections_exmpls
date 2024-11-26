@@ -1,5 +1,6 @@
 package iterable_interface.collection_interfaces.a_list_interface.stack_class_realization;
 
+import java.util.List;
 import java.util.Map;
 import java.util.Stack;
 import java.util.stream.Collectors;
@@ -21,6 +22,9 @@ public class StackWithStreamAPI {
 
                     // reduce
         reducedStackWithN(stack, 4); // Reduced stack plus _n_ number: 104
+
+                    // collection
+        collectedStack(stack); // Collecting list from stack: [10, 20, 30, 40]
 
     }
 
@@ -61,6 +65,15 @@ public class StackWithStreamAPI {
 
         System.out.println("Reduced stack plus _n_ number: " + sum);
 
+    }
+
+                            // COLLECTION
+    private static void collectedStack(Stack<Integer> stack) {
+        List<Integer> listFromStack = stack.stream()
+                .collect(Collectors.toList()) // or toList()
+        ;
+
+        System.out.println("Collection of list from stack: " + listFromStack);
     }
 
 }

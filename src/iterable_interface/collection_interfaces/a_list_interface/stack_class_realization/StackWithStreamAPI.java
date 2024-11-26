@@ -35,6 +35,9 @@ public class StackWithStreamAPI {
                     // counting
         countAllElements(stack); // Number of elements in stack: 4
 
+                    // iterate
+        iteratedStack(stack); // 10 20 30 40
+
     }
 
 
@@ -112,6 +115,13 @@ public class StackWithStreamAPI {
         long count = stack.stream().count();
 
         System.out.println("Number of elements in stack: " + count);
+    }
+
+                            // ITERATE
+    private static void iteratedStack(Stack<Integer> stack) {
+        stack.stream()
+                .forEach(System.out::println)
+        ;
     }
 
 }

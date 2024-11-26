@@ -1,6 +1,7 @@
 package iterable_interface.collection_interfaces.a_list_interface.vector_class_realization_synchronized_and_outdated;
 
 import java.util.Arrays;
+import java.util.Optional;
 import java.util.Vector;
 import java.util.stream.Collectors;
 
@@ -22,6 +23,10 @@ public class VectorWithStreamAPI {
 
             // sorting
         sortedVector(vector); // Sorted vector: [1, 2, 3, 4]
+
+            // find max and min
+        getMaxValue(vector); // Max value of vector: 4
+        getMinValue(vector); // Min value of vector: 1
 
     }
 
@@ -70,6 +75,24 @@ public class VectorWithStreamAPI {
         ;
 
         System.out.println("Sorted vector: " + sortedVector);
+    }
+
+                                // FIND MAX AND MIN
+
+    private static void getMaxValue(Vector<Integer> vector) {
+        Optional<Integer> max = vector.stream()
+                .max(Integer::compareTo)
+        ;
+
+        max.ifPresent(val -> System.out.println("Max value of vector: " + val));
+    }
+
+    private static void getMinValue(Vector<Integer> vector) {
+        Optional<Integer> min = vector.stream()
+                .min(Integer::compareTo)
+        ;
+
+        min.ifPresent(val -> System.out.println("Min value of vector: " + val));
     }
 
 }

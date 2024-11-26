@@ -19,6 +19,9 @@ public class StackWithStreamAPI {
                     // mapping
         mappedToString(stack); // An Integer stack is mapped to a String: [Ten, Twenty, Thirty, Forty]
 
+                    // reduce
+        reducedStackWithN(stack, 4); // Reduced stack plus _n_ number: 104
+
     }
 
 
@@ -48,6 +51,16 @@ public class StackWithStreamAPI {
         ;
 
         System.out.println("An Integer stack is mapped to a String: " + mappedStack);
+    }
+
+                            // REDUCE
+    private static void reducedStackWithN(Stack<Integer> stack, int n) {
+        int sum = stack.stream()
+                .reduce(n, Integer::sum)
+        ;
+
+        System.out.println("Reduced stack plus _n_ number: " + sum);
+
     }
 
 }

@@ -1,6 +1,7 @@
 package iterable_interface.collection_interfaces.a_list_interface.vector_class_realization_synchronized_and_outdated;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.Optional;
 import java.util.Vector;
 import java.util.stream.Collectors;
@@ -35,6 +36,11 @@ public class VectorWithStreamAPI {
 
             // reduce
         reducedSumAndTarget(vector, 7); // Reduced sum: 17 (because 10 + 7)
+
+            // collection to array/list
+        collectedToArray(vector); // Array from Vector: [1, 2, 3, 4]
+        collectedToList(vector); // List from Vector: [1, 2, 3, 4]
+
 
     }
 
@@ -140,5 +146,22 @@ public class VectorWithStreamAPI {
 
     }
 
+                            // COLLECT
+
+    private static void collectedToArray(Vector<Integer> vector) {
+        Integer[] array = vector.stream()
+                .toArray(Integer[]::new)
+        ;
+
+        System.out.println("Array from Vector: " + Arrays.toString(array));
+    }
+
+    private static void collectedToList(Vector<Integer> vector) {
+        List<Integer> list = vector.stream()
+                .toList()
+        ;
+
+        System.out.println("List from Vector: " + list);
+    }
 
 }

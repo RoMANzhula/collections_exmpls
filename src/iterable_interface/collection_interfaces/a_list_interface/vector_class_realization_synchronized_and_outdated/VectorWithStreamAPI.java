@@ -28,6 +28,11 @@ public class VectorWithStreamAPI {
         getMaxValue(vector); // Max value of vector: 4
         getMinValue(vector); // Min value of vector: 1
 
+            // match (all, any, none)
+        matchAllVector(vector); // All match > 0: true
+        matchAnyVector(vector); // Any match > 2: false
+        matchNoneVector(vector); // None match == 100: false
+
     }
 
                                 // CREATE STREAM
@@ -94,5 +99,32 @@ public class VectorWithStreamAPI {
 
         min.ifPresent(val -> System.out.println("Min value of vector: " + val));
     }
+
+                                // MATCH ALL/ANY/NONE
+
+    private static void matchAllVector(Vector<Integer> vector) {
+        boolean allMatch = vector.stream()
+                .allMatch(element -> element > 0)
+        ;
+
+        System.out.println("All match > 0: " + allMatch);
+    }
+
+    private static void matchAnyVector(Vector<Integer> vector) {
+        boolean anyMatch = vector.stream()
+                .allMatch(element -> element > 2)
+        ;
+
+        System.out.println("Any match > 2: " + anyMatch);
+    }
+
+    private static void matchNoneVector(Vector<Integer> vector) {
+        boolean noneMatch = vector.stream()
+                .allMatch(element -> element == 100)
+        ;
+
+        System.out.println("None match == 100: " + noneMatch);
+    }
+
 
 }

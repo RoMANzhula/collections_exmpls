@@ -1,9 +1,6 @@
 package iterable_interface.collection_interfaces.a_list_interface.vector_class_realization_synchronized_and_outdated;
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.Optional;
-import java.util.Vector;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class VectorWithStreamAPI {
@@ -44,6 +41,8 @@ public class VectorWithStreamAPI {
             // count
         countElementsMoreThan(vector, 2); // Count of elements > conditions: 2
 
+        // grouping
+        groupedByDividingBy(vector, 3); // Multiples of divider: [3]  Are not multiples of divider: [1, 2, 4]
 
     }
 
@@ -175,6 +174,19 @@ public class VectorWithStreamAPI {
         ;
 
         System.out.println("Count of elements > conditions: " + counter);
+    }
+
+                            // GROUPED BY
+    private static void groupedByDividingBy(Vector<Integer> vector, int divider) {
+        Map<Boolean, Vector<Integer>> gropedByDivisibility = vector.stream()
+                .collect(Collectors.partitioningBy(
+                        element -> element % divider == 0,
+                        Collectors.toCollection(Vector::new)
+                ))
+        ;
+
+        System.out.println("Multiples of divider: " + gropedByDivisibility.get(true));
+        System.out.println("Are not multiples of divider: " + gropedByDivisibility.get(false));
     }
 
 }

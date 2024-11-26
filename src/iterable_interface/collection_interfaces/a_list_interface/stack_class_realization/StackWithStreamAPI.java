@@ -32,7 +32,8 @@ public class StackWithStreamAPI {
                     // sorting
         sortedStack(stack); // Sorted stack: [10, 20, 30, 40]
 
-
+                    // counting
+        countAllElements(stack); // Number of elements in stack: 4
 
     }
 
@@ -106,6 +107,11 @@ public class StackWithStreamAPI {
         System.out.println("Sorted stack: " + sortedStack);
     }
 
+                            // COUNT
+    private static void countAllElements(Stack<Integer> stack) {
+        long count = stack.stream().count();
 
+        System.out.println("Number of elements in stack: " + count);
+    }
 
 }

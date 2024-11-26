@@ -26,6 +26,9 @@ public class StackWithStreamAPI {
                     // collection
         collectedStack(stack); // Collecting list from stack: [10, 20, 30, 40]
 
+                    // match (all, any, none)
+        matchedStack(stack); // All elements are positive: true  Any element greater than 10: true  No negative elements: true
+
     }
 
 
@@ -74,6 +77,18 @@ public class StackWithStreamAPI {
         ;
 
         System.out.println("Collection of list from stack: " + listFromStack);
+    }
+
+                            // MATCH
+    private static void matchedStack(Stack<Integer> stack) {
+        boolean allPositive = stack.stream().allMatch(x -> x > 0);
+        System.out.println("All elements are positive: " + allPositive);
+
+        boolean anyGreaterThan10 = stack.stream().anyMatch(x -> x > 10);
+        System.out.println("Any element greater than 10: " + anyGreaterThan10);
+
+        boolean noneNegative = stack.stream().noneMatch(x -> x < 0);
+        System.out.println("No negative elements: " + noneNegative);
     }
 
 }

@@ -12,6 +12,11 @@ public class LinkedHashSetWithStreamAPI {
         // filter
         filteredMoreCondition(linkedHashSet, 20); // Filtered: [25, 30]
 
+        // mapping
+        mappedLinkedHashSetToString(linkedHashSet); // Mapped to String: [Number: 10, Number: 15, Number: 20, Number: 25, Number: 30]
+
+
+
     }
 
                         // FILTER
@@ -23,6 +28,17 @@ public class LinkedHashSetWithStreamAPI {
         ;
 
         System.out.println("Filtered: " + filtered);
+    }
+
+                        // MAP
+
+    private static void mappedLinkedHashSetToString(LinkedHashSet<Integer> linkedHashSet) {
+        LinkedHashSet<String> mappedLinkedHashSet = linkedHashSet.stream()
+                .map(number -> "Number: " + number)
+                .collect(Collectors.toCollection(LinkedHashSet::new))
+        ;
+
+        System.out.println("Mapped to String: " + mappedLinkedHashSet);
     }
 
 }

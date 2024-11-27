@@ -21,7 +21,9 @@ public class HashSetWithStreamAPI {
         // mapping
         mappedHashSet(hashSet); // Mapped HashSet (to upper case): [DATE, CHERRY, APPLE, ELDERBERRY, BANANA]
 
-
+        // find (any, first)
+        findAll(hashSet); // Found fruit: Avocado
+        findFirst(hashSet); // First element starts with 'A': Apple
 
     }
 
@@ -47,7 +49,25 @@ public class HashSetWithStreamAPI {
         System.out.println("Mapped HashSet (to upper case): " + mappedHashSet);
     }
 
+                            // FIND ANY/FIRST
 
+    private static void findAll(HashSet<String> hashSet) {
+        hashSet.add("Avocado");
+
+        hashSet.stream()
+                .filter(fruit -> fruit.startsWith("Av"))
+                .findAny()
+                .ifPresent(fruit -> System.out.println("Found fruit: " + fruit))
+        ;
+    }
+
+    private static void findFirst(HashSet<String> hashSet) {
+        hashSet.stream()
+                .filter(fruit -> fruit.startsWith("A"))
+                .findFirst()
+                .ifPresent(fruit -> System.out.println("First element starts with 'A': " + fruit))
+        ;
+    }
 
 
 }

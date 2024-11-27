@@ -25,6 +25,11 @@ public class HashSetWithStreamAPI {
         findAll(hashSet); // Found fruit: Avocado
         findFirst(hashSet); // First element starts with 'A': Apple
 
+        // match (all/any/none)
+        allMatchHashSet(hashSet);
+        anyMatchHashSet(hashSet);
+        noneMatchHashSet(hashSet);
+
     }
 
                             // FILTER
@@ -68,6 +73,34 @@ public class HashSetWithStreamAPI {
                 .ifPresent(fruit -> System.out.println("First element starts with 'A': " + fruit))
         ;
     }
+
+                            // MATCH (ANY/ALL/NONE)
+
+    private static void allMatchHashSet(HashSet<String> hashSet) {
+        boolean allMatch = hashSet.stream()
+                .allMatch(fruit -> fruit.length() > 3)
+        ;
+
+        System.out.println("All elements have length > 3: " + allMatch);
+    }
+
+    private static void anyMatchHashSet(HashSet<String> hashSet) {
+        boolean allMatch = hashSet.stream()
+                .allMatch(fruit -> fruit.equals("Banana") )
+        ;
+
+        System.out.println("Contains 'Banana': " + allMatch);
+    }
+
+    private static void noneMatchHashSet(HashSet<String> hashSet) {
+        boolean noneMatch = hashSet.stream()
+                .noneMatch(fruit -> fruit.equals("Cucumber"))
+        ;
+
+        System.out.println("Contains no 'Cucumber': " + noneMatch);
+    }
+
+
 
 
 }

@@ -26,9 +26,12 @@ public class HashSetWithStreamAPI {
         findFirst(hashSet); // First element starts with 'A': Apple
 
         // match (all/any/none)
-        allMatchHashSet(hashSet);
-        anyMatchHashSet(hashSet);
-        noneMatchHashSet(hashSet);
+        allMatchHashSet(hashSet); // All elements have length > 3: true
+        anyMatchHashSet(hashSet); // Contains 'Banana': false
+        noneMatchHashSet(hashSet); // Contains no 'Cucumber': true
+
+        // counting
+        countElementsMoreThanCondition(hashSet, 10); // Count of fruits with length > 10: 0
 
     }
 
@@ -100,7 +103,16 @@ public class HashSetWithStreamAPI {
         System.out.println("Contains no 'Cucumber': " + noneMatch);
     }
 
+                            // COUNT
 
+    private static void countElementsMoreThanCondition(HashSet<String> hashSet, int condition) {
+        long count = hashSet.stream()
+                .filter(element -> element.length() > condition)
+                .count()
+        ;
+
+        System.out.println("Count of fruits with length > " + condition + ": " + count);
+    }
 
 
 }

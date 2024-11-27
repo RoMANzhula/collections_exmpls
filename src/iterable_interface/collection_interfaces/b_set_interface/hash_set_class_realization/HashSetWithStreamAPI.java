@@ -33,6 +33,11 @@ public class HashSetWithStreamAPI {
         // counting
         countElementsMoreThanCondition(hashSet, 10); // Count of fruits with length > 10: 0
 
+        // sort
+        sortedHashSet(hashSet); // Sorted fruit: Apple   Sorted fruit: Avocado ...
+
+
+
     }
 
                             // FILTER
@@ -112,6 +117,15 @@ public class HashSetWithStreamAPI {
         ;
 
         System.out.println("Count of fruits with length > " + condition + ": " + count);
+    }
+
+                            // SORT
+
+    private static void sortedHashSet(HashSet<String> hashSet) {
+        hashSet.stream()
+                .sorted()
+                .forEach(element -> System.out.println("Sorted fruit: " + element))
+        ;
     }
 
 

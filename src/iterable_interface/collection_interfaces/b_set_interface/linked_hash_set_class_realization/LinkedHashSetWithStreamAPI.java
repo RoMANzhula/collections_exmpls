@@ -15,7 +15,9 @@ public class LinkedHashSetWithStreamAPI {
         // mapping
         mappedLinkedHashSetToString(linkedHashSet); // Mapped to String: [Number: 10, Number: 15, Number: 20, Number: 25, Number: 30]
 
-
+        // find max/min
+        findMaxElement(linkedHashSet); // Max element: 30
+        findMinElement(linkedHashSet); // Min element: 10
 
     }
 
@@ -40,5 +42,26 @@ public class LinkedHashSetWithStreamAPI {
 
         System.out.println("Mapped to String: " + mappedLinkedHashSet);
     }
+
+                        // FIND MAX/MIN
+
+    private static void findMaxElement(LinkedHashSet<Integer> linkedHashSet) {
+        int max = linkedHashSet.stream()
+                .max(Integer::compare)
+                .orElseThrow(() -> new IllegalArgumentException("LinkedHashSet is empty."))
+        ;
+
+        System.out.println("Max element: " + max);
+    }
+
+    private static void findMinElement(LinkedHashSet<Integer> linkedHashSet) {
+        int min = linkedHashSet.stream()
+                .min(Integer::compare)
+                .orElseThrow(() -> new IllegalArgumentException("LinkedHashSet is empty."))
+        ;
+
+        System.out.println("Min element: " + min);
+    }
+
 
 }

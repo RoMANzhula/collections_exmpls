@@ -36,7 +36,8 @@ public class HashSetWithStreamAPI {
         // sort
         sortedHashSet(hashSet); // Sorted fruit: Apple   Sorted fruit: Avocado ...
 
-
+        // reduce
+        reducedHashSet(hashSet); // Concatenated string from HashSet: Apple, Cherry, Avocado, Date, Elderberry, Banana,
 
     }
 
@@ -126,6 +127,16 @@ public class HashSetWithStreamAPI {
                 .sorted()
                 .forEach(element -> System.out.println("Sorted fruit: " + element))
         ;
+    }
+
+                            // REDUCE
+
+    private static void reducedHashSet(HashSet<String> hashSet) {
+        String concatenated = hashSet.stream()
+                .reduce("", (acc, element) -> acc + element + ", ")
+        ;
+
+        System.out.println("Concatenated string from HashSet: " + concatenated);
     }
 
 

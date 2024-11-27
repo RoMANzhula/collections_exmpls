@@ -39,6 +39,9 @@ public class HashSetWithStreamAPI {
         // reduce
         reducedHashSet(hashSet); // Concatenated string from HashSet: Apple, Cherry, Avocado, Date, Elderberry, Banana,
 
+        // change to List
+        hashSetToList(hashSet, "e"); // Filtered element to List (contains 'e'): [Apple, Cherry, Date, Elderberry]
+
     }
 
                             // FILTER
@@ -137,6 +140,17 @@ public class HashSetWithStreamAPI {
         ;
 
         System.out.println("Concatenated string from HashSet: " + concatenated);
+    }
+
+                            // COLLECT TO ANOTHER TYPE
+
+    private static void hashSetToList(HashSet<String> hashSet, String conditionContains) {
+        var fruitList = hashSet.stream()
+                .filter(element -> element.contains(conditionContains))
+                .collect(Collectors.toList())
+        ;
+
+        System.out.println("Filtered element to List (contains '" + conditionContains + "'): " + fruitList);
     }
 
 

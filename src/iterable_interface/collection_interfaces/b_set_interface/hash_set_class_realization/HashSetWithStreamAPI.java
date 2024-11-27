@@ -16,12 +16,18 @@ public class HashSetWithStreamAPI {
         hashSet.add("Elderberry");
 
         // filter
-        filteredSet(hashSet); // Filtered HashSet (starts with 'B'): [Banana]
+        filteredHashSet(hashSet); // Filtered HashSet (starts with 'B'): [Banana]
+
+        // mapping
+        mappedHashSet(hashSet); // Mapped HashSet (to upper case): [DATE, CHERRY, APPLE, ELDERBERRY, BANANA]
+
+
 
     }
 
                             // FILTER
-    private static void filteredSet(HashSet<String> hashSet) {
+
+    private static void filteredHashSet(HashSet<String> hashSet) {
         HashSet<String> filteredSet = hashSet.stream()
                 .filter(fruit -> fruit.startsWith("B"))
                 .collect(Collectors.toCollection(HashSet::new))
@@ -29,5 +35,19 @@ public class HashSetWithStreamAPI {
 
         System.out.println("Filtered HashSet (starts with 'B'): " + filteredSet);
     }
+
+                            // MAP
+
+    private static void mappedHashSet(HashSet<String> hashSet) {
+        HashSet<String> mappedHashSet = hashSet.stream()
+                .map(String::toUpperCase)
+                .collect(Collectors.toCollection(HashSet::new))
+        ;
+
+        System.out.println("Mapped HashSet (to upper case): " + mappedHashSet);
+    }
+
+
+
 
 }

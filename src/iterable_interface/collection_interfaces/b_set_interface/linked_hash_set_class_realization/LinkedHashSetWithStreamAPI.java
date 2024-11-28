@@ -26,6 +26,9 @@ public class LinkedHashSetWithStreamAPI {
         // convert to Array
         convertedToArray(linkedHashSet); // Converted to Array: [10, 15, 20, 25, 30]
 
+        // count
+        countElement(linkedHashSet, 15); // Count elements which > 15: 3
+
     }
 
                         // FILTER
@@ -88,6 +91,17 @@ public class LinkedHashSetWithStreamAPI {
         ;
 
         System.out.println("Converted to Array: " + Arrays.toString(array));
+    }
+
+                            // COUNT
+
+    private static void countElement(LinkedHashSet<Integer> linkedHashSet, int condition) {
+        long count = linkedHashSet.stream()
+                .filter(element -> element > 15)
+                .count()
+        ;
+
+        System.out.println("Count elements which > " + condition + ": " + count);
     }
 
 

@@ -29,6 +29,11 @@ public class LinkedHashSetWithStreamAPI {
         // count
         countElement(linkedHashSet, 15); // Count elements which > 15: 3
 
+        // match all/any/none
+        allMatchLinkedHashSet(linkedHashSet, 0); // All elements > 0: true
+        anyMatchLinkedHashSet(linkedHashSet, 20); // Any elements > 20: true
+        noneMatchLinkedHashSet(linkedHashSet, 0); // None elements < 0: true
+
     }
 
                         // FILTER
@@ -103,6 +108,33 @@ public class LinkedHashSetWithStreamAPI {
 
         System.out.println("Count elements which > " + condition + ": " + count);
     }
+
+                            // MATCH ALL/ANY/NONE
+
+    private static void allMatchLinkedHashSet(LinkedHashSet<Integer> linkedHashSet, int conditionMoreThan) {
+        boolean allMatch = linkedHashSet.stream()
+                .allMatch(element -> element > conditionMoreThan)
+        ;
+
+        System.out.println("All elements > " + conditionMoreThan + ": " + allMatch);
+    }
+
+    private static void anyMatchLinkedHashSet(LinkedHashSet<Integer> linkedHashSet, int conditionMoreThan) {
+        boolean anyMatch = linkedHashSet.stream()
+                .anyMatch(element -> element > conditionMoreThan)
+        ;
+
+        System.out.println("Any elements > " + conditionMoreThan + ": " + anyMatch);
+    }
+
+    private static void noneMatchLinkedHashSet(LinkedHashSet<Integer> linkedHashSet, int conditionLessThan) {
+        boolean noneMatch = linkedHashSet.stream()
+                .noneMatch(element -> element < conditionLessThan)
+        ;
+
+        System.out.println("None elements < " + conditionLessThan + ": " + noneMatch);
+    }
+
 
 
 }

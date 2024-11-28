@@ -23,7 +23,8 @@ public class LinkedHashSetWithStreamAPI {
         // collect to list
         collectedToList(linkedHashSet); // Converted to the List: [10, 15, 20, 25, 30]
 
-
+        // convert to Array
+        convertedToArray(linkedHashSet); // Converted to Array: [10, 15, 20, 25, 30]
 
     }
 
@@ -79,7 +80,15 @@ public class LinkedHashSetWithStreamAPI {
         System.out.println("Converted to the List: " + collected);
     }
 
+                            // CONVERT TO ARRAY
 
+    private static void convertedToArray(LinkedHashSet<Integer> linkedHashSet) {
+        Integer[] array = linkedHashSet.stream()
+                .toArray(Integer[]::new)
+        ;
+
+        System.out.println("Converted to Array: " + Arrays.toString(array));
+    }
 
 
 }

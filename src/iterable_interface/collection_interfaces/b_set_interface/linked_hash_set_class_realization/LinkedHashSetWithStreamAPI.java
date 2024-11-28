@@ -1,5 +1,6 @@
 package iterable_interface.collection_interfaces.b_set_interface.linked_hash_set_class_realization;
 
+import java.util.Arrays;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -18,6 +19,11 @@ public class LinkedHashSetWithStreamAPI {
         // find max/min
         findMaxElement(linkedHashSet); // Max element: 30
         findMinElement(linkedHashSet); // Min element: 10
+
+        // collect to list
+        collectedToList(linkedHashSet); // Converted to the List: [10, 15, 20, 25, 30]
+
+
 
     }
 
@@ -62,6 +68,18 @@ public class LinkedHashSetWithStreamAPI {
 
         System.out.println("Min element: " + min);
     }
+
+                            // COLLECT
+
+    private static void collectedToList(LinkedHashSet<Integer> linkedHashSet) {
+        List<Integer> collected = linkedHashSet.stream()
+                .collect(Collectors.toList())
+        ;
+
+        System.out.println("Converted to the List: " + collected);
+    }
+
+
 
 
 }

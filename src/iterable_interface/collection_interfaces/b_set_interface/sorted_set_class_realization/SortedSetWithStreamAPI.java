@@ -25,6 +25,10 @@ public class SortedSetWithStreamAPI {
         // sort
         sortedAsReverse(sortedSet); // 25, 20, 15, 10, 5
 
+        // match all/any/none
+        allMatchMoreThan(sortedSet, 0); // All match > 0: true
+        anyMatchMoreThan(sortedSet, 15); // Any match > 15: true
+        noneMatchLessThan(sortedSet, 0); // None match < 0: false
 
     }
 
@@ -65,5 +69,30 @@ public class SortedSetWithStreamAPI {
         ;
     }
 
+                        // MATCH ALL/ANY/NONE
+
+    private static void allMatchMoreThan(SortedSet<Integer> sortedSet, int condition) {
+        boolean allMatch = sortedSet.stream()
+                .allMatch(element -> element > 0)
+        ;
+
+        System.out.println("All match > " + condition + ": " + allMatch);
+    }
+
+    private static void anyMatchMoreThan(SortedSet<Integer> sortedSet, int condition) {
+        boolean anyMatch = sortedSet.stream()
+                .anyMatch(element -> element > 0)
+                ;
+
+        System.out.println("Any match > " + condition + ": " + anyMatch);
+    }
+
+    private static void noneMatchLessThan(SortedSet<Integer> sortedSet, int condition) {
+        boolean noneMatch = sortedSet.stream()
+                .noneMatch(element -> element > 0)
+                ;
+
+        System.out.println("None match < " + condition + ": " + noneMatch);
+    }
 
 }

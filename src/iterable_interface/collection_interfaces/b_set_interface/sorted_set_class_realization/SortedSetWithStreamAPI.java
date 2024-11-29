@@ -30,6 +30,9 @@ public class SortedSetWithStreamAPI {
         anyMatchMoreThan(sortedSet, 15); // Any match > 15: true
         noneMatchLessThan(sortedSet, 0); // None match < 0: false
 
+        // count
+        countElementsMoreThanCondition(sortedSet, 10); // Element(s) > 10: 3
+
     }
 
                         // PRINT ALL
@@ -93,6 +96,17 @@ public class SortedSetWithStreamAPI {
                 ;
 
         System.out.println("None match < " + condition + ": " + noneMatch);
+    }
+
+                        // COUNT
+
+    private static void countElementsMoreThanCondition(SortedSet<Integer> sortedSet, int condition) {
+        long count = sortedSet.stream()
+                .filter(element -> element > condition)
+                .count()
+        ;
+
+        System.out.println("Element(s) > " + condition + ": " + count);
     }
 
 }

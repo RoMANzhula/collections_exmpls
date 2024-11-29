@@ -16,6 +16,9 @@ public class SortedSetWithStreamAPI {
         // print all element
         printAll(sortedSet); // 5 10 15 20 25
 
+        // filter
+        filteredMoreThanCondition(sortedSet, 10); // 15, 20, 25
+
 
     }
 
@@ -23,6 +26,15 @@ public class SortedSetWithStreamAPI {
 
     private static void printAll(SortedSet<Integer> sortedSet) {
         sortedSet.stream()
+                .forEach(System.out::println)
+        ;
+    }
+
+                        // FILTER
+
+    private static void filteredMoreThanCondition(SortedSet<Integer> sortedSet, int condition) {
+        sortedSet.stream()
+                .filter(element -> element > condition)
                 .forEach(System.out::println)
         ;
     }

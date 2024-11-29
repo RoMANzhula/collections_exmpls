@@ -37,7 +37,8 @@ public class SortedSetWithStreamAPI {
         // limit
         returnFirstElementsWithCondition(sortedSet, 3); // Limited SortedSet: [5, 10, 15]
 
-
+        // skip
+        skippedElements(sortedSet, 3); // Skipped first 3 element(s): [20, 25]
 
     }
 
@@ -145,6 +146,17 @@ public class SortedSetWithStreamAPI {
         ;
 
         System.out.println("Limited SortedSet: " + limited);
+    }
+
+                        // SKIP
+
+    private static void skippedElements(SortedSet<Integer> sortedSet, int condition) {
+        SortedSet<Integer> skipped = sortedSet.stream()
+                .skip(condition)
+                .collect(Collectors.toCollection(TreeSet::new))
+        ;
+
+        System.out.println("Skipped first " + condition + " element(s): " + skipped);
     }
 
 }

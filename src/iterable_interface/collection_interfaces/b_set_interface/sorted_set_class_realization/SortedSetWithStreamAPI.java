@@ -22,6 +22,9 @@ public class SortedSetWithStreamAPI {
         // map
         mappedIncreasedTwice(sortedSet); // Mapped: [10, 20, 30, 40, 50]
 
+        // sort
+        sortedAsReverse(sortedSet); // 25, 20, 15, 10, 5
+
 
     }
 
@@ -51,6 +54,15 @@ public class SortedSetWithStreamAPI {
         ;
 
         System.out.println("Mapped: " + mappedSortedSet);
+    }
+
+                        // SORTED
+
+    private static void sortedAsReverse(SortedSet<Integer> sortedSet) {
+        sortedSet.stream()
+                .sorted(Comparator.reverseOrder())
+                .forEach(System.out::println)
+        ;
     }
 
 

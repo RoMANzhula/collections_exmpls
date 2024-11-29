@@ -2,10 +2,7 @@ package iterable_interface.collection_interfaces.b_set_interface.sorted_set_clas
 
 import com.sun.source.doctree.SeeTree;
 
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.SortedSet;
-import java.util.TreeSet;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class SortedSetWithStreamAPI {
@@ -32,6 +29,10 @@ public class SortedSetWithStreamAPI {
 
         // count
         countElementsMoreThanCondition(sortedSet, 10); // Element(s) > 10: 3
+
+        // reduce
+        getSumAllElements(sortedSet); // Sum: 75
+
 
     }
 
@@ -107,6 +108,16 @@ public class SortedSetWithStreamAPI {
         ;
 
         System.out.println("Element(s) > " + condition + ": " + count);
+    }
+
+                        // REDUCE
+
+    private static void getSumAllElements(SortedSet<Integer> sortedSet) {
+        Optional<Integer> sum = sortedSet.stream()
+                .reduce(Integer::sum)
+        ;
+
+        sum.ifPresent(s -> System.out.println("Sum: " + s));
     }
 
 }

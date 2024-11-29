@@ -33,6 +33,10 @@ public class SortedSetWithStreamAPI {
         // reduce
         getSumAllElements(sortedSet); // Sum: 75
 
+        // collect
+        collectedToSet(sortedSet); // Converted Set: [5, 10, 15]
+
+
 
     }
 
@@ -118,6 +122,17 @@ public class SortedSetWithStreamAPI {
         ;
 
         sum.ifPresent(s -> System.out.println("Sum: " + s));
+    }
+
+                        // COLLECT
+
+    private static void collectedToSet(SortedSet<Integer> sortedSet) {
+        Set<Integer> resultSet = sortedSet.stream()
+                .filter(element -> element < 20)
+                .collect(Collectors.toSet())
+        ;
+
+        System.out.println("Converted Set: " + resultSet);
     }
 
 }

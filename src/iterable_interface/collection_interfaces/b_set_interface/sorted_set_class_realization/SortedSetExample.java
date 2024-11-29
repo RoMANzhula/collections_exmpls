@@ -45,6 +45,9 @@ public class SortedSetExample {
         sortedSet.removeFirst();
         System.out.println("After remove first: " + sortedSet); // After remove first: [3, 4, 7]
 
+        // reverse
+        System.out.println("Reversed: " + sortedSet.reversed()); // Reversed: [7, 4, 3]
+
         // delete all
         sortedSet.clear();
         System.out.println("After clear(): " + sortedSet); // After clear(): []

@@ -19,6 +19,9 @@ public class SortedSetWithStreamAPI {
         // filter
         filteredMoreThanCondition(sortedSet, 10); // 15, 20, 25
 
+        // map
+        mappedIncreasedTwice(sortedSet); // Mapped: [10, 20, 30, 40, 50]
+
 
     }
 
@@ -37,6 +40,17 @@ public class SortedSetWithStreamAPI {
                 .filter(element -> element > condition)
                 .forEach(System.out::println)
         ;
+    }
+
+                        // MAP
+
+    private static void mappedIncreasedTwice(SortedSet<Integer> sortedSet) {
+        SortedSet<Integer> mappedSortedSet = sortedSet.stream()
+                .map(element -> element * 2)
+                .collect(Collectors.toCollection(TreeSet::new))
+        ;
+
+        System.out.println("Mapped: " + mappedSortedSet);
     }
 
 

@@ -1,7 +1,5 @@
 package iterable_interface.collection_interfaces.b_set_interface.sorted_set_class_realization;
 
-import com.sun.source.doctree.SeeTree;
-
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -35,6 +33,9 @@ public class SortedSetWithStreamAPI {
 
         // collect
         collectedToSet(sortedSet); // Converted Set: [5, 10, 15]
+
+        // limit
+        returnFirstElementsWithCondition(sortedSet, 3); // Limited SortedSet: [5, 10, 15]
 
 
 
@@ -133,6 +134,17 @@ public class SortedSetWithStreamAPI {
         ;
 
         System.out.println("Converted Set: " + resultSet);
+    }
+
+                        // LIMIT
+
+    private static void returnFirstElementsWithCondition(SortedSet<Integer> sortedSet, int condition) {
+        SortedSet<Integer> limited = sortedSet.stream()
+                .limit(condition)
+                .collect(Collectors.toCollection(TreeSet::new))
+        ;
+
+        System.out.println("Limited SortedSet: " + limited);
     }
 
 }

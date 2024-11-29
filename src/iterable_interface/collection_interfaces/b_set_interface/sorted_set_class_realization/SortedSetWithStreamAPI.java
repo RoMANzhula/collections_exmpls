@@ -1,5 +1,6 @@
 package iterable_interface.collection_interfaces.b_set_interface.sorted_set_class_realization;
 
+import javax.lang.model.element.Element;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -39,6 +40,10 @@ public class SortedSetWithStreamAPI {
 
         // skip
         skippedElements(sortedSet, 3); // Skipped first 3 element(s): [20, 25]
+
+        // find first/any
+        findFirstElement(sortedSet); // First element: 5
+        findAnyElement(sortedSet); // Any element: 5
 
     }
 
@@ -157,6 +162,24 @@ public class SortedSetWithStreamAPI {
         ;
 
         System.out.println("Skipped first " + condition + " element(s): " + skipped);
+    }
+
+                        // FIND FIRST/ANY
+
+    private static void findFirstElement(SortedSet<Integer> sortedSet) {
+        Optional<Integer> firstElement = sortedSet.stream()
+                .findFirst()
+        ;
+
+        System.out.println("First element: " + firstElement.get());
+    }
+
+    private static void findAnyElement(SortedSet<Integer> sortedSet) {
+        Optional<Integer> anyElement = sortedSet.stream()
+                .findFirst()
+                ;
+
+        anyElement.ifPresent(element -> System.out.println("Any element: " + element));
     }
 
 }
